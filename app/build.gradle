@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'koin'
+apply from: '../dependencies/core.gradle'
+apply from: '../dependencies/test.gradle'
+
+
+android {
+    compileSdkVersion VERSIONS_BUILD.COMPILE_SDK
+    buildToolsVersion VERSIONS_BUILD.BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        applicationId "com.search.lastfm"
+        minSdkVersion VERSIONS_BUILD.MIN_SDK
+        targetSdkVersion VERSIONS_BUILD.TARGET_SDK
+        versionCode VERSIONS_BUILD.VERSION_CODE
+        versionName VERSIONS_BUILD.VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = VERSIONS_BUILD.JAVA_VERSION
+        targetCompatibility = VERSIONS_BUILD.JAVA_VERSION
+    }
+
+    kotlinOptions {
+        jvmTarget = VERSIONS_BUILD.JAVA_VERSION
+    }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+
+        animationsDisabled = true
+    }
+}

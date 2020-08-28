@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LastFm</string>
+    <string name="search_view">Search</string>
+    <string name="top_charts_tv_label">Top Charts</string>
+    <string name="trending_songs_tv_label">Trending Songs</string>
+    <string name="popular_albums_tv_label">Popular Albums</string>
+    <string name="featured_artists_tv_label">Featured Artists</string>
+</resources>
