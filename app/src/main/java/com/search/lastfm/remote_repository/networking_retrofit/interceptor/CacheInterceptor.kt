@@ -21,7 +21,9 @@ class CacheInterceptor : Interceptor {
                 .build()
 
             request = request.newBuilder()
-                .cacheControl(cc)
+                .removeHeader("Pragma")
+                .header("Cache-Control", "public, max-age=" + 5000)
+//                .cacheControl(cc)
                 .build()
 
             return chain.proceed(request)

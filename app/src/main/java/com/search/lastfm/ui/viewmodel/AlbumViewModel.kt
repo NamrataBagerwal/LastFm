@@ -21,8 +21,8 @@ class AlbumViewModel(private val albumUsecase: AlbumUsecase): ViewModel() {
 
     private fun searchAlbum(album:String) {
         viewModelScope.launch(context = coroutineContext) {
-            val album = albumUsecase.searchAlbum(album)
-            albumLiveData.postValue(album)
+            val albumList = albumUsecase.searchAlbum(album)
+            albumLiveData.postValue(albumList)
         }
     }
 

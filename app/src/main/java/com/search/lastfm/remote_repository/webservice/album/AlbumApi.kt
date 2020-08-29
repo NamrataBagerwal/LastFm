@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface AlbumApi {
 
-    @GET("2.0")
+    @GET("2.0/")
     fun searchAlbum(
         @Query("method") method: String,
         @Query("album") album: String,

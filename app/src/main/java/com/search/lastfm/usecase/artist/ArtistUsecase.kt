@@ -1,6 +1,7 @@
 package com.search.lastfm.usecase.artist
 
 import com.search.lastfm.AppConstants
+import com.search.lastfm.BuildConfig
 import com.search.lastfm.dto.ArtistDto
 import com.search.lastfm.remote_repository.BaseRepository
 import com.search.lastfm.remote_repository.webservice.artist.ArtistRepositoryImpl
@@ -13,7 +14,7 @@ class ArtistUsecase(private val artistRepositoryImpl: BaseRepository) {
             (artistRepositoryImpl as ArtistRepositoryImpl).searchArtist(
                 AppConstants.ARTIST_SEARCH,
                 artist,
-                AppConstants.API_KEY,
+                BuildConfig.API_KEY,
                 AppConstants.JSON_FORMAT
             )
         )

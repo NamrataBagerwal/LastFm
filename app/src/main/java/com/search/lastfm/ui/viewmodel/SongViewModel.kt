@@ -21,8 +21,8 @@ class SongViewModel(private val songUsecase: SongUsecase) : ViewModel() {
 
     private fun searchSong(song: String) {
         viewModelScope.launch(context = coroutineContext) {
-            val song = songUsecase.searchSong(song)
-            songLiveData.postValue(song)
+            val songList = songUsecase.searchSong(song)
+            songLiveData.postValue(songList)
         }
     }
 

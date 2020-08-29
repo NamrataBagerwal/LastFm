@@ -1,6 +1,7 @@
 package com.search.lastfm.usecase.album
 
 import com.search.lastfm.AppConstants
+import com.search.lastfm.BuildConfig
 import com.search.lastfm.dto.AlbumDto
 import com.search.lastfm.remote_repository.BaseRepository
 import com.search.lastfm.remote_repository.webservice.album.AlbumRepositoryImpl
@@ -13,7 +14,7 @@ class AlbumUsecase(private val albumRepositoryImpl: BaseRepository) {
             (albumRepositoryImpl as AlbumRepositoryImpl).searchAlbum(
                 AppConstants.ALBUM_SEARCH,
                 album,
-                AppConstants.API_KEY,
+                BuildConfig.API_KEY,
                 AppConstants.JSON_FORMAT
             )
         )

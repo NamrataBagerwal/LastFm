@@ -6,6 +6,11 @@ apply plugin: 'koin'
 apply from: '../dependencies/core.gradle'
 apply from: '../dependencies/test.gradle'
 
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+}
+
 
 android {
     compileSdkVersion VERSIONS_BUILD.COMPILE_SDK
@@ -30,6 +35,8 @@ android {
         debug {
             applicationIdSuffix ".debug"
             debuggable true
+            buildConfigField("String", "API_KEY", "\"133a07d3689b4d2635303f5c8332b60e\"")
+            buildConfigField("String", 'BASE_URL', "\"http://ws.audioscrobbler.com/\"")
         }
     }
 
