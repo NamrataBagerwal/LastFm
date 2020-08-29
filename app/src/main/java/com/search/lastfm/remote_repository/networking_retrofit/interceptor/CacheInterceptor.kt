@@ -16,17 +16,22 @@ class CacheInterceptor : Interceptor {
         ) {
 
 
-            val cc = CacheControl.Builder()
-                .maxStale(1, TimeUnit.DAYS)
-                .build()
+//            val cc = CacheControl.Builder()
+//                .maxStale(1, TimeUnit.DAYS)
+//                .build()
+//
+//            request = request.newBuilder()
+//                .removeHeader("Pragma")
+//                .header("Cache-Control", "public, max-age=" + 5000)
+////                .cacheControl(cc)
+//                .build()
+//
+//            return chain.proceed(request)
 
-            request = request.newBuilder()
+            return originalResponse.newBuilder()
                 .removeHeader("Pragma")
                 .header("Cache-Control", "public, max-age=" + 5000)
-//                .cacheControl(cc)
-                .build()
-
-            return chain.proceed(request)
+                .build();
 
         } else {
             return originalResponse

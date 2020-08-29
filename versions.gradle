@@ -2,7 +2,7 @@
  * Add any build related configuration here so that all the modules can be build on same version.
  */
 def VERSIONS_BUILD = [:]
-VERSIONS_BUILD.MIN_SDK = 22
+VERSIONS_BUILD.MIN_SDK = 23
 VERSIONS_BUILD.TARGET_SDK = 30
 VERSIONS_BUILD.COMPILE_SDK = 30
 VERSIONS_BUILD.VERSION_CODE = 1
