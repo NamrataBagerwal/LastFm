@@ -8,4 +8,5 @@ object AppConstants {
     const val INDEX_ZERO = 0
     const val MAX_ITEMS_TO_BE_DISPLAYED = 5
     const val TYPE_OF_ITEM = "TYPE_OF_ITEM"
+    const val ITEM_DETAIL_OBJECT = "ITEM_DETAIL_OBJECT"
 }

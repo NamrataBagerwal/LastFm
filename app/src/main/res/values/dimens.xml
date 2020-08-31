@@ -6,4 +6,6 @@
     <dimen name="dp_20">20dp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="icon_size">64dp</dimen>
+    <dimen name="icon_size_detail">150dp</dimen>
+    <dimen name="dp_430">430dp</dimen>
 </resources>

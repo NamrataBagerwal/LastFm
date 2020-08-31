@@ -44,8 +44,7 @@ class AlbumAdapter(val onAlbumClickListener: (albumDto: AlbumDto) -> Unit) :
         }
     }
 
-    override fun getItemCount() =
-        if (albumList.size > MAX_ITEMS_TO_BE_DISPLAYED) MAX_ITEMS_TO_BE_DISPLAYED else albumList.size
+    override fun getItemCount() = albumList.size
 
     class AlbumViewHolder(
         itemView: View

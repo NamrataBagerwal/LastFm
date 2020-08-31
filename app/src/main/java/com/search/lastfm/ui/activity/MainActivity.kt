@@ -7,10 +7,14 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
 import android.view.Menu
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.search.lastfm.AppConstants
 import com.search.lastfm.R
@@ -36,6 +40,14 @@ class MainActivity : AppCompatActivity() {
     private val allAlbumsTextView: TextView by lazy { findViewById(R.id.allAlbumsTextView) }
     private val allArtistsTextView: TextView by lazy { findViewById(R.id.allArtistsTextView) }
 
+    private val imageViewHomePage: ImageView by lazy { findViewById(R.id.imageViewHomePage) }
+    private val linearLayoutSearchResults: LinearLayout by lazy { findViewById(R.id.linearLayoutSearchResults) }
+    private val progressBar: ContentLoadingProgressBar by lazy {
+        findViewById(
+            R.id.contentLoadingProgressBar
+        )
+    }
+
     private lateinit var songAdapter: SongAdapter
     private lateinit var albumAdapter: AlbumAdapter
     private lateinit var artistAdapter: ArtistAdapter
@@ -43,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        showHomePage()
 
         handleIntent(intent)
 
@@ -53,44 +67,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
-//
-//        val searchItem: MenuItem = menu.findItem(R.id.app_bar_search)
-//        val searchView = searchItem.actionView as SearchView
-//
-//        val searchPlate =  searchView.findViewById(androidx.appcompat.R.id.search_src_text) as EditText
-//        searchPlate.hint = "Search"
-//
-//        val searchPlateView: View =
-//            searchView.findViewById(androidx.appcompat.R.id.search_plate)
-//        searchPlateView.setBackgroundColor(
-//            ContextCompat.getColor(
-//                this,
-//                android.R.color.transparent
-//            )
-//        )
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//// do your logic here
-// Toast.makeText(applicationContext, query, Toast.LENGTH_SHORT).show()
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return false
-//            }
-//        })
-//
-//        val searchManager =
-//            getSystemService(Context.SEARCH_SERVICE) as SearchManager
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-//        return super.onCreateOptionsMenu(menu)
 
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
-            Log.i("TAG", "SUBMIT BUTTON PRESS")
         }
         return true
     }
@@ -103,8 +84,10 @@ class MainActivity : AppCompatActivity() {
     private fun handleIntent(intent: Intent) {
 
         if (Intent.ACTION_SEARCH == intent.action) {
+
+            showProgressBar()
+
             val query = intent.getStringExtra(SearchManager.QUERY)
-            Toast.makeText(applicationContext, query, Toast.LENGTH_SHORT).show()
 
             //use the query to search your data somehow
             query?.let {
@@ -118,25 +101,32 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeLiveData() {
         viewModel.getAlbumLiveData().observe(this@MainActivity, { albumList ->
-            Log.i("TAG", albumList.size.toString())
-            Toast.makeText(applicationContext, albumList.size.toString(), Toast.LENGTH_SHORT).show()
+
+            showSearchResultsView()
 
             albumAdapter = AlbumAdapter(onAlbumClickListener = { albumDto: AlbumDto ->
-                Toast.makeText(applicationContext, albumDto.artist.toString(), Toast.LENGTH_SHORT)
-                    .show()
+
+                val intent = Intent(this@MainActivity, SearchResultDetailActivity::class.java)
+                intent.putExtra(AppConstants.TYPE_OF_ITEM, getString(R.string.all_albums_tv_label))
+                intent.putExtra(getString(R.string.all_albums_tv_label), albumDto)
+                startActivity(intent)
+
             })
             popularAlbumsRecyclerView.adapter = albumAdapter
             albumAdapter.albumList = albumList
         })
 
         viewModel.getArtistLiveData().observe(this@MainActivity, { artistList ->
-            Log.i("TAG", artistList.size.toString())
-            Toast.makeText(applicationContext, artistList.size.toString(), Toast.LENGTH_SHORT)
-                .show()
+
+            showSearchResultsView()
 
             artistAdapter = ArtistAdapter(onArtistClickListener = { artistDto: ArtistDto ->
-                Toast.makeText(applicationContext, artistDto.name.toString(), Toast.LENGTH_SHORT)
-                    .show()
+
+                val intent = Intent(this@MainActivity, SearchResultDetailActivity::class.java)
+                intent.putExtra(AppConstants.TYPE_OF_ITEM, getString(R.string.all_artists_tv_label))
+                intent.putExtra(getString(R.string.all_artists_tv_label), artistDto)
+                startActivity(intent)
+
             })
             featuredArtistsRecyclerView.adapter = artistAdapter
             artistAdapter.artistList = artistList
@@ -144,12 +134,16 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.getSongLiveData().observe(this@MainActivity, { songList ->
-            Log.i("TAG", songList.size.toString())
-            Toast.makeText(applicationContext, songList.size.toString(), Toast.LENGTH_SHORT).show()
+
+            showSearchResultsView()
 
             songAdapter = SongAdapter(onSongClickListener = { songDto: SongDto ->
-                Toast.makeText(applicationContext, songDto.name.toString(), Toast.LENGTH_SHORT)
-                    .show()
+
+                val intent = Intent(this@MainActivity, SearchResultDetailActivity::class.java)
+                intent.putExtra(AppConstants.TYPE_OF_ITEM, getString(R.string.all_songs_tv_label))
+                intent.putExtra(getString(R.string.all_songs_tv_label), songDto)
+                startActivity(intent)
+
             })
             trendingSongsRecyclerView.adapter = songAdapter
             songAdapter.songList = songList
@@ -167,7 +161,7 @@ class MainActivity : AppCompatActivity() {
                 songAdapter.songList as ArrayList<out Parcelable>
             )
             intent.putExtras(bundle)
-            this@MainActivity.startActivity(intent)
+            startActivity(intent)
         }
         allAlbumsTextView.setOnClickListener {
             bundle.putString(AppConstants.TYPE_OF_ITEM, getString(R.string.all_albums_tv_label))
@@ -176,7 +170,7 @@ class MainActivity : AppCompatActivity() {
                 albumAdapter.albumList as ArrayList<out Parcelable>
             )
             intent.putExtras(bundle)
-            this@MainActivity.startActivity(intent)
+            startActivity(intent)
         }
         allArtistsTextView.setOnClickListener {
             bundle.putString(AppConstants.TYPE_OF_ITEM, getString(R.string.all_artists_tv_label))
@@ -185,7 +179,30 @@ class MainActivity : AppCompatActivity() {
                 artistAdapter.artistList as ArrayList<out Parcelable>
             )
             intent.putExtras(bundle)
-            this@MainActivity.startActivity(intent)
+            startActivity(intent)
         }
+    }
+
+    private fun showSearchResultsView(){
+        hideProgressBar()
+        linearLayoutSearchResults.visibility = View.VISIBLE
+        imageViewHomePage.visibility = View.GONE
+    }
+
+    private fun showHomePage(){
+        linearLayoutSearchResults.visibility = View.GONE
+        imageViewHomePage.visibility = View.VISIBLE
+    }
+
+    private fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
+        progressBar.show()
+    }
+
+
+    private fun hideProgressBar() {
+        progressBar.hide()
+        progressBar.visibility = View.GONE
+
     }
 }

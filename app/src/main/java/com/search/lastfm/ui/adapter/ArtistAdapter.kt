@@ -44,8 +44,7 @@ class ArtistAdapter(val onArtistClickListener: (artistDto: ArtistDto) -> Unit) :
         }
     }
 
-    override fun getItemCount() =
-        if (artistList.size > AppConstants.MAX_ITEMS_TO_BE_DISPLAYED) AppConstants.MAX_ITEMS_TO_BE_DISPLAYED else artistList.size
+    override fun getItemCount() = artistList.size
 
     class ArtistViewHolder(
         itemView: View

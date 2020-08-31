@@ -45,7 +45,6 @@ class SongAdapter(val onSongClickListener: (songDto: SongDto) -> Unit) :
     }
 
     override fun getItemCount() = songList.size
-//        if (songList.size > AppConstants.MAX_ITEMS_TO_BE_DISPLAYED) AppConstants.MAX_ITEMS_TO_BE_DISPLAYED else songList.size
 
     class SongViewHolder(
         itemView: View
