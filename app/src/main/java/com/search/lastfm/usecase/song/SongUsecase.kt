@@ -27,7 +27,7 @@ class SongUsecase(private val songRepositoryImpl: BaseRepository) {
 
             val songDto = SongDto(
                 song.artist,
-                song.image[AppConstants.INDEX_ONE].text,
+                song.image[AppConstants.INDEX_ZERO].text,
                 song.listeners,
                 song.mbid,
                 song.name,

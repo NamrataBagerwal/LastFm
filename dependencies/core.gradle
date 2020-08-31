@@ -19,7 +19,6 @@ dependencies {
     //Retrofit libraries
     implementation "com.squareup.retrofit2:retrofit:$DEP_VERSION.retrofit2_version"
     implementation "com.squareup.retrofit2:converter-gson:$DEP_VERSION.retrofit2_version"
-    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$DEP_VERSION.jackson_module_version"
 
     //Okhttp3
     implementation "com.squareup.okhttp3:okhttp:$DEP_VERSION.okhttp3_version"

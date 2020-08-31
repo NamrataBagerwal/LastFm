@@ -25,7 +25,7 @@ class ArtistUsecase(private val artistRepositoryImpl: BaseRepository) {
         artistSearchApiResponse?.results?.artistmatches?.artist?.forEach { artist: Artist ->
 
             val artistDto = ArtistDto(
-                artist.image[AppConstants.INDEX_ONE].text,
+                artist.image[AppConstants.INDEX_ZERO].text,
                 artist.listeners,
                 artist.mbid,
                 artist.name,

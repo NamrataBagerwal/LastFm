@@ -3,6 +3,9 @@
     <string name="search_view">Search</string>
     <string name="top_charts_tv_label">Top Charts</string>
     <string name="trending_songs_tv_label">Trending Songs</string>
+    <string name="all_songs_tv_label">SELL ALL SONGS</string>
     <string name="popular_albums_tv_label">Popular Albums</string>
+    <string name="all_albums_tv_label">SELL ALL ALBUMS</string>
     <string name="featured_artists_tv_label">Featured Artists</string>
+    <string name="all_artists_tv_label">SELL ALL ARTISTS</string>
 </resources>

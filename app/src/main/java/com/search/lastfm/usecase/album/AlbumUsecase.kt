@@ -26,7 +26,7 @@ class AlbumUsecase(private val albumRepositoryImpl: BaseRepository) {
 
             val albumDto = AlbumDto(
                 album.artist,
-                album.image[AppConstants.INDEX_ONE].text,
+                album.image[AppConstants.INDEX_ZERO].text,
                 album.mbid,
                 album.name,
                 album.streamable,

@@ -5,5 +5,7 @@ object AppConstants {
     const val ARTIST_SEARCH = "artist.search"
     const val SONG_SEARCH = "track.search"
     const val JSON_FORMAT = "json"
-    const val INDEX_ONE = 1
+    const val INDEX_ZERO = 0
+    const val MAX_ITEMS_TO_BE_DISPLAYED = 5
+    const val TYPE_OF_ITEM = "TYPE_OF_ITEM"
 }

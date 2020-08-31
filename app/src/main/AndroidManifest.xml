@@ -17,7 +17,8 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.activity.SearchResultsActivity">
+            android:name=".ui.activity.SearchResultsActivity"
+            android:launchMode="singleTop">
 
 
         </activity>

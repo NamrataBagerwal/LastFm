@@ -1,5 +1,9 @@
 package com.search.lastfm.dto
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ArtistDto(
     val image: String?,
     val listeners: String?,
@@ -7,4 +11,4 @@ data class ArtistDto(
     val name: String?,
     val streamable: String?,
     val url: String?
-)
+): Parcelable

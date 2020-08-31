@@ -1,20 +1,20 @@
 package com.search.lastfm.remote_repository.webservice.song.entity
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 import com.search.lastfm.remote_repository.webservice.common.Attr
 import com.search.lastfm.remote_repository.webservice.common.OpenSearchQuery
 
 data class Results(
-    @JsonProperty("@attr")
+    @SerializedName("@attr")
     val attr: Attr,
-    @JsonProperty("opensearch:Query")
+    @SerializedName("opensearch:Query")
     val openSearchQuery: OpenSearchQuery,
-    @JsonProperty("opensearch:itemsPerPage")
+    @SerializedName("opensearch:itemsPerPage")
     val openSearchItemsPerPage: String,
-    @JsonProperty("opensearch:startIndex")
+    @SerializedName("opensearch:startIndex")
     val openSearchStartIndex: String,
-    @JsonProperty("opensearch:totalResults")
+    @SerializedName("opensearch:totalResults")
     val openSearchTotalResults: String,
-    @JsonProperty("trackmatches")
+    @SerializedName("trackmatches")
     val trackMatches: TrackMatches
 )

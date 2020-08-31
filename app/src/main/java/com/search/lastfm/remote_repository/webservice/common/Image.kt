@@ -1,9 +1,9 @@
 package com.search.lastfm.remote_repository.webservice.common
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 data class Image(
-    @JsonProperty("#text")
+    @SerializedName("#text")
     val text: String,
     val size: String
 )

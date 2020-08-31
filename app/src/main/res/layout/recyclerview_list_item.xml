@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp">
+
+    <ImageView
+        android:id="@+id/thumbNailImageView"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/itemTitleTextView"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:fontFamily="sans-serif-black"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toEndOf="@+id/thumbNailImageView"
+        app:layout_constraintTop_toTopOf="@+id/thumbNailImageView"
+        tools:text="Wednesdayhshsksjkjaslkjs" />
+
+    <TextView
+        android:id="@+id/itemDescriptionTextView"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_8"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="@+id/itemTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/itemTitleTextView"
+        tools:text="Excellent!!!" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
