@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        println("TAG onCreate")
+
         if (savedInstanceState == null) {
             showHomePage()
             handleIntent(intent)
@@ -75,17 +75,8 @@ class MainActivity : AppCompatActivity() {
             handleSavedInstanceState(savedInstanceState)
     }
 
-    override fun onResume() {
-        super.onResume()
-        println("TAG onResume")
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
-
-        println("TAG onCreateOptionsMenu")
-
-        println("TAG onCreateOptionsMenu ${menu.findItem(R.id.app_bar_search)}")
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView = menu.findItem(R.id.app_bar_search).actionView as SearchView

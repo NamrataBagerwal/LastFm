@@ -1,21 +1,17 @@
 package com.search.lastfm.ui.activity
 
 import android.os.Build
-import android.view.Menu
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.launchActivity
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.search.lastfm.R
 import com.search.lastfm.di.DependencyInjectionModule
 import com.search.lastfm.dto.AlbumDto
 import com.search.lastfm.dto.ArtistDto
 import com.search.lastfm.dto.SongDto
-import com.search.lastfm.ui.util.TestData
 import com.search.lastfm.ui.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.junit.*
@@ -26,15 +22,13 @@ import org.koin.test.KoinTest
 import org.koin.test.mock.MockProviderRule
 import org.koin.test.mock.declareMock
 import org.mockito.ArgumentCaptor
-import org.mockito.BDDMockito.*
+import org.mockito.BDDMockito.given
 import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
-import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
-import org.robolectric.fakes.RoboMenu
 
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [Build.VERSION_CODES.P])
@@ -98,12 +92,6 @@ class MainActivityTest : KoinTest {
 
         activityScenario = launchActivity()
         activityScenario.moveToState(Lifecycle.State.CREATED)
-
-//        Mockito.verify(factsLiveData, Mockito.times(1))
-//            .observe(
-//                ArgumentMatchers.any(LifecycleOwner::class.java),
-//                factsObserverCaptor.capture()
-//            )
     }
 
     @Test
@@ -129,6 +117,7 @@ class MainActivityTest : KoinTest {
         }
     }
 
+    // TODO: Fix this Test Case
 //    @Test
 //    fun `search result is displayed for some query`() {
 //
@@ -143,7 +132,7 @@ class MainActivityTest : KoinTest {
 //            activity.setVisible(true)
 //
 //            val menu = RoboMenu()
-////            val menuItem: MenuItem = menu.add(R.id.app_bar_search).setActionView(mockSearchView)
+//            val menuItem: MenuItem = menu.add(R.id.app_bar_search).setActionView(mockSearchView)
 //            val mockSearchView: SearchView = Mockito.mock(SearchView::class.java)
 //            menu.add(R.id.app_bar_search).actionView = mockSearchView
 //            activity.onCreateOptionsMenu(menu as Menu)
