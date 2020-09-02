@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.search.lastfm.ui.activity.SearchResultDetailActivity"
-    android:gravity="center_horizontal">
+    tools:context="com.search.lastfm.ui.activity.SearchResultDetailActivity">
 
     <ImageView
         android:id="@+id/thumbNailImageView"
@@ -13,7 +13,7 @@
         android:layout_height="@dimen/icon_size_detail"
         android:layout_marginTop="@dimen/dp_8"
         android:layout_marginBottom="@dimen/dp_8"
-       />
+        android:contentDescription="@string/thumbnail_image_description"/>
 
     <TextView
         android:id="@+id/itemTitleTextView"
@@ -35,7 +35,7 @@
         android:layout_height="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/listeners"/>
+        android:text="@string/listeners" />
 
     <TextView
         android:id="@+id/itemDetailTextView3"
@@ -43,7 +43,7 @@
         android:layout_height="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/streamable"/>
+        android:text="@string/streamable" />
 
     <TextView
         android:id="@+id/itemDetailTextView4"
@@ -51,6 +51,6 @@
         android:layout_height="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/url"/>
+        android:text="@string/url" />
 
 </LinearLayout>

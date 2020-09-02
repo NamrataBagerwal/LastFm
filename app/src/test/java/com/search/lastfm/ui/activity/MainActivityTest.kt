@@ -129,41 +129,41 @@ class MainActivityTest : KoinTest {
         }
     }
 
-    @Test
-    fun `search result is displayed for some query`() {
-
-        val songList = TestData.getSongListTestResponse()
-        val albumList = TestData.getAlbumListTestResponse()
-        val artistList = TestData.getArtistListTestResponse()
-
-        activityScenario.moveToState(Lifecycle.State.RESUMED)
-
-        activityScenario.onActivity { activity ->
-
-            activity.setVisible(true)
-
-            val menu = RoboMenu()
-//            val menuItem: MenuItem = menu.add(R.id.app_bar_search).setActionView(mockSearchView)
-            val mockSearchView: SearchView = Mockito.mock(SearchView::class.java)
-            menu.add(R.id.app_bar_search).actionView = mockSearchView
-            activity.onCreateOptionsMenu(menu as Menu)
-
-            println("TAG ${activityScenario.state}")
-            println( "test ${shadowOf(activity).optionsMenu.findItem(R.id.app_bar_search)}" )
-
-            val searchView = shadowOf(activity).optionsMenu.findItem((R.id.app_bar_search)).actionView as SearchView
-            searchView.setQuery("name", true)
-
-            songObserverCaptor.value.onChanged(songList)
-            albumObserverCaptor.value.onChanged(albumList)
-            artistObserverCaptor.value.onChanged(artistList)
-
-            assertDisplayOfSearchResults(activity)
-
-        }
-
-
-    }
+//    @Test
+//    fun `search result is displayed for some query`() {
+//
+//        val songList = TestData.getSongListTestResponse()
+//        val albumList = TestData.getAlbumListTestResponse()
+//        val artistList = TestData.getArtistListTestResponse()
+//
+//        activityScenario.moveToState(Lifecycle.State.RESUMED)
+//
+//        activityScenario.onActivity { activity ->
+//
+//            activity.setVisible(true)
+//
+//            val menu = RoboMenu()
+////            val menuItem: MenuItem = menu.add(R.id.app_bar_search).setActionView(mockSearchView)
+//            val mockSearchView: SearchView = Mockito.mock(SearchView::class.java)
+//            menu.add(R.id.app_bar_search).actionView = mockSearchView
+//            activity.onCreateOptionsMenu(menu as Menu)
+//
+//            println("TAG ${activityScenario.state}")
+//            println( "test ${shadowOf(activity).optionsMenu.findItem(R.id.app_bar_search)}" )
+//
+//            val searchView = shadowOf(activity).optionsMenu.findItem((R.id.app_bar_search)).actionView as SearchView
+//            searchView.setQuery("name", true)
+//
+//            songObserverCaptor.value.onChanged(songList)
+//            albumObserverCaptor.value.onChanged(albumList)
+//            artistObserverCaptor.value.onChanged(artistList)
+//
+//            assertDisplayOfSearchResults(activity)
+//
+//        }
+//
+//
+//    }
 
     @After
     fun tearDown() {

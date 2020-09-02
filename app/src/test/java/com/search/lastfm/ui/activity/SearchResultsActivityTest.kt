@@ -162,7 +162,23 @@ class SearchResultsActivityTest : KoinTest {
     }
 
     @Test
-    fun `Verify SearchResultsActivity invokes SearchResultDetailActivity on Recycler View Item Click`(){
+    fun `Verify SearchResultsActivity's intent containing SELL ALL SONGS key hides Album and Artist related UI while painting its data on UI during onCreate`() {
+        activityScenario.onActivity { activity ->
+
+            Assert.assertTrue(activity.allSongsTextView.visibility == View.GONE)
+
+            Assert.assertTrue(activity.popularAlbumsTextView.visibility == View.GONE)
+            Assert.assertTrue(activity.popularAlbumsRecyclerView.visibility == View.GONE)
+            Assert.assertTrue(activity.allAlbumsTextView.visibility == View.GONE)
+            
+            Assert.assertTrue(activity.featuredArtistsTextView.visibility == View.GONE)
+            Assert.assertTrue(activity.featuredArtistsRecyclerView.visibility == View.GONE)
+            Assert.assertTrue(activity.allArtistsTextView.visibility == View.GONE)
+        }
+    }
+
+    @Test
+    fun `Verify SearchResultsActivity invokes SearchResultDetailActivity on Recycler View Item Click`() {
         activityScenario.onActivity { activity ->
 
             activity.trendingSongsRecyclerView.layoutManager?.findViewByPosition(INDEX_ZERO)

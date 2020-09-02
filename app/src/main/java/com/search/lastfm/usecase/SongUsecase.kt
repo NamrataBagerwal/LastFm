@@ -5,8 +5,8 @@ import com.search.lastfm.BuildConfig
 import com.search.lastfm.dto.SongDto
 import com.search.lastfm.remote_repository.BaseRepository
 import com.search.lastfm.remote_repository.webservice.song.SongRepositoryImpl
-import com.search.lastfm.remote_repository.webservice.song.entity.SongSearchApiResponse
 import com.search.lastfm.remote_repository.webservice.song.entity.Song
+import com.search.lastfm.remote_repository.webservice.song.entity.SongSearchApiResponse
 
 class SongUsecase(private val songRepositoryImpl: BaseRepository) {
 

@@ -11,4 +11,8 @@
     <string name="url">Url:</string>
     <string name="streamable">Streamable:</string>
     <string name="listeners">Listeners:</string>
+    <string name="network_unavailable_error_msg">Please make sure to have stable Internet Connection. Pull down to Refresh.</string>
+    <string name="server_unavailable_error_msg">Error fetching data from Server. Please try again pulling down to Refresh.</string>
+    <string name="thumbnail_image_description">This will act as a thumbnail image</string>
+    <string name="home_page_cover_image">This image will act as a Home Page Cover</string>
 </resources>

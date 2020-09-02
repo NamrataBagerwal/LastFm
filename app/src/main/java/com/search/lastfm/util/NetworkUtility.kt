@@ -8,10 +8,12 @@ import android.net.NetworkCapabilities
 
 object NetworkUtility {
 
-    fun isNetworkAvailable(context: Context): Boolean?{
-        val connectivityManager: ConnectivityManager = context.getSystemService(Activity.CONNECTIVITY_SERVICE) as ConnectivityManager
+    fun isNetworkAvailable(context: Context): Boolean? {
+        val connectivityManager: ConnectivityManager =
+            context.getSystemService(Activity.CONNECTIVITY_SERVICE) as ConnectivityManager
         val network: Network? = connectivityManager.activeNetwork
-        val networkCapabilities: NetworkCapabilities?=  connectivityManager.getNetworkCapabilities(network)
+        val networkCapabilities: NetworkCapabilities? =
+            connectivityManager.getNetworkCapabilities(network)
         return networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
     }
 }
