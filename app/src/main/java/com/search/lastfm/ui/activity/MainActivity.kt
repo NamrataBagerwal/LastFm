@@ -26,7 +26,7 @@ import com.search.lastfm.ui.adapter.ArtistAdapter
 import com.search.lastfm.ui.adapter.SongAdapter
 import com.search.lastfm.ui.viewmodel.MainActivityViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.ArrayList
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        println("TAG onCreate" )
 
         showHomePage()
 
@@ -65,12 +66,24 @@ class MainActivity : AppCompatActivity() {
         setOnClickListeners()
     }
 
+    override fun onResume() {
+        super.onResume()
+        println("TAG onResume" )
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
 
+        println("TAG onCreateOptionsMenu" )
+
+        println("TAG onCreateOptionsMenu ${menu.findItem(R.id.app_bar_search)}" )
         // Associate searchable configuration with the SearchView
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         (menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
+            setOnCloseListener {
+                showHomePage()
+                false
+            }
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
         }
         return true
@@ -199,10 +212,16 @@ class MainActivity : AppCompatActivity() {
         progressBar.show()
     }
 
-
     private fun hideProgressBar() {
         progressBar.hide()
         progressBar.visibility = View.GONE
 
+    }
+
+    override fun onBackPressed() {
+        if(linearLayoutSearchResults.visibility == View.VISIBLE)
+            showHomePage()
+        else
+            super.onBackPressed()
     }
 }

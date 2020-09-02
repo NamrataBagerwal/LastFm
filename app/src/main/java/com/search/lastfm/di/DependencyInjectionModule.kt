@@ -10,9 +10,9 @@ import com.search.lastfm.remote_repository.webservice.song.SongApi
 import com.search.lastfm.remote_repository.webservice.song.SongApiFactory
 import com.search.lastfm.remote_repository.webservice.song.SongRepositoryImpl
 import com.search.lastfm.ui.viewmodel.MainActivityViewModel
-import com.search.lastfm.usecase.album.AlbumUsecase
-import com.search.lastfm.usecase.artist.ArtistUsecase
-import com.search.lastfm.usecase.song.SongUsecase
+import com.search.lastfm.usecase.AlbumUsecase
+import com.search.lastfm.usecase.ArtistUsecase
+import com.search.lastfm.usecase.SongUsecase
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

@@ -1,4 +1,4 @@
-package com.search.lastfm.usecase.artist
+package com.search.lastfm.usecase
 
 import com.search.lastfm.AppConstants
 import com.search.lastfm.BuildConfig

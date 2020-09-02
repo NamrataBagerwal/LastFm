@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.search.lastfm.dto.AlbumDto
 import com.search.lastfm.dto.ArtistDto
 import com.search.lastfm.dto.SongDto
-import com.search.lastfm.usecase.album.AlbumUsecase
-import com.search.lastfm.usecase.artist.ArtistUsecase
-import com.search.lastfm.usecase.song.SongUsecase
+import com.search.lastfm.usecase.AlbumUsecase
+import com.search.lastfm.usecase.ArtistUsecase
+import com.search.lastfm.usecase.SongUsecase
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

@@ -24,9 +24,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_result_detail)
 
-        val typeOfItem = intent.getStringExtra(AppConstants.TYPE_OF_ITEM)
-
-        when(typeOfItem){
+        when(val typeOfItem = intent.getStringExtra(AppConstants.TYPE_OF_ITEM)){
             getString(R.string.all_songs_tv_label) -> {
 
                 val songDto = intent.getParcelableExtra<SongDto>(typeOfItem)
@@ -38,7 +36,7 @@ class SearchResultDetailActivity : AppCompatActivity() {
 
                 itemTitleTextView.text = songDto?.name
                 itemDetailTextView1.text = songDto?.artist
-                itemDetailTextView2.append("${ songDto?.listeners}")
+                itemDetailTextView2.append(songDto?.listeners)
                 itemDetailTextView3.append(songDto?.streamable)
                 itemDetailTextView4.append(songDto?.url)
 
